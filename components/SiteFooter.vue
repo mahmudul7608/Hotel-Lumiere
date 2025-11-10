@@ -270,9 +270,9 @@
       </div>
 
       <!-- Bottom Bar -->
-      <div class="border-t border-white/10 pt-8 mt-8 relative">
+      <div class="border-t border-white/10 pt-8 mt-8 pb-8 md:pb-12 relative">
         <div
-          class="flex flex-col items-center justify-between gap-4 text-sm text-white/60 md:flex-row"
+          class="flex flex-wrap items-center justify-center gap-3 md:gap-4 text-sm text-white/60"
         >
           <p class="text-white/70">
             © {{ new Date().getFullYear() }} Hôtel Lumière. All rights reserved.

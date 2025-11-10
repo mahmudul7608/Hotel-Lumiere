@@ -21,7 +21,12 @@
             @mouseleave="roomsOpen = false"
           >
             <button
-              class="flex items-center gap-1.5 text-sm text-white/80 hover:text-white transition-colors duration-200"
+              :class="[
+                'flex items-center gap-1.5 text-sm transition-colors duration-200 relative',
+                activeSection === 'rooms'
+                  ? 'text-gold border-b-2 border-gold pb-1'
+                  : 'text-white/80 hover:text-white',
+              ]"
               @click="roomsOpen = !roomsOpen"
               aria-haspopup="true"
               :aria-expanded="roomsOpen"
@@ -72,28 +77,53 @@
             </transition>
           </div>
           <NuxtLink
-            to="/gallery"
-            class="text-sm text-white/80 hover:text-white transition-colors duration-200"
+            to="#gallery"
+            :class="[
+              'text-sm transition-colors duration-200 relative',
+              activeSection === 'gallery'
+                ? 'text-gold border-b-2 border-gold pb-1'
+                : 'text-white/80 hover:text-white',
+            ]"
             >Gallery</NuxtLink
           >
           <NuxtLink
-            to="/dining"
-            class="text-sm text-white/80 hover:text-white transition-colors duration-200"
+            to="#dining"
+            :class="[
+              'text-sm transition-colors duration-200 relative',
+              activeSection === 'dining'
+                ? 'text-gold border-b-2 border-gold pb-1'
+                : 'text-white/80 hover:text-white',
+            ]"
             >Dining</NuxtLink
           >
           <NuxtLink
             to="/facilities"
-            class="text-sm text-white/80 hover:text-white transition-colors duration-200"
+            :class="[
+              'text-sm transition-colors duration-200 relative',
+              activeSection === 'facilities'
+                ? 'text-gold border-b-2 border-gold pb-1'
+                : 'text-white/80 hover:text-white',
+            ]"
             >Facilities</NuxtLink
           >
           <NuxtLink
-            to="/about"
-            class="text-sm text-white/80 hover:text-white transition-colors duration-200"
+            to="#about"
+            :class="[
+              'text-sm transition-colors duration-200 relative',
+              activeSection === 'about'
+                ? 'text-gold border-b-2 border-gold pb-1'
+                : 'text-white/80 hover:text-white',
+            ]"
             >About</NuxtLink
           >
           <NuxtLink
-            to="/contact"
-            class="text-sm text-white/80 hover:text-white transition-colors duration-200"
+            to="#contact"
+            :class="[
+              'text-sm transition-colors duration-200 relative',
+              activeSection === 'contact'
+                ? 'text-gold border-b-2 border-gold pb-1'
+                : 'text-white/80 hover:text-white',
+            ]"
             >Contact</NuxtLink
           >
         </nav>
@@ -278,8 +308,11 @@ const mobileMenuOpen = ref(false);
 const roomsOpen = ref(false);
 const roomsMobileOpen = ref(false);
 const roomsMenuRef = ref<HTMLElement | null>(null);
+const activeSection = ref<string>("");
+
 let offWindowClick: (() => void) | null = null;
 let offWindowKey: (() => void) | null = null;
+let offScroll: (() => void) | null = null;
 
 function toggleMobileMenu() {
   mobileMenuOpen.value = !mobileMenuOpen.value;
@@ -295,6 +328,28 @@ function closeMobileMenu() {
   mobileMenuOpen.value = false;
   roomsMobileOpen.value = false;
   document.body.style.overflow = "";
+}
+
+// Scroll detection for active section
+function updateActiveSection() {
+  const sections = ["rooms", "gallery", "dining", "about", "contact"];
+  const scrollPosition = window.scrollY + 150; // Offset for header height
+
+  for (let i = sections.length - 1; i >= 0; i--) {
+    const section = document.getElementById(sections[i]);
+    if (section) {
+      const sectionTop = section.offsetTop;
+      const sectionHeight = section.offsetHeight;
+      if (
+        scrollPosition >= sectionTop &&
+        scrollPosition < sectionTop + sectionHeight
+      ) {
+        activeSection.value = sections[i];
+        return;
+      }
+    }
+  }
+  activeSection.value = "";
 }
 
 onMounted(() => {
@@ -315,15 +370,24 @@ onMounted(() => {
       }
     }
   };
+  const scrollHandler = () => {
+    updateActiveSection();
+  };
+
   window.addEventListener("click", clickHandler);
   window.addEventListener("keydown", keyHandler);
+  window.addEventListener("scroll", scrollHandler);
+  updateActiveSection(); // Initial check
+
   offWindowClick = () => window.removeEventListener("click", clickHandler);
   offWindowKey = () => window.removeEventListener("keydown", keyHandler);
+  offScroll = () => window.removeEventListener("scroll", scrollHandler);
 });
 
 onBeforeUnmount(() => {
   if (offWindowClick) offWindowClick();
   if (offWindowKey) offWindowKey();
+  if (offScroll) offScroll();
   document.body.style.overflow = "";
 });
 

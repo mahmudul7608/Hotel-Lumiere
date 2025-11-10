@@ -12,6 +12,7 @@
           muted
           playsinline
           autoplay
+          preload="metadata"
           @play="isVideoPlaying = true"
           @pause="isVideoPlaying = false"
         >
@@ -360,14 +361,30 @@
     </section>
 
     <!-- Rooms Section -->
-    <section id="rooms" class="border-b border-white/10 bg-white/[0.02]">
+    <section
+      id="rooms"
+      :class="[
+        'border-b bg-white/[0.02] transition-all duration-300',
+        activeSection === 'rooms'
+          ? 'border-gold border-b-2'
+          : 'border-white/10',
+      ]"
+    >
       <BaseContainer>
         <div class="py-12">
           <div class="mb-8 text-center">
-            <h2 class="text-3xl font-semibold md:text-4xl text-white mb-3">
-              Featured Rooms
-            </h2>
-            <p class="text-white/60 text-sm max-w-xl mx-auto mb-4">
+            <div class="inline-block mb-4">
+              <div class="h-px w-16 bg-gold mx-auto mb-3"></div>
+              <h2
+                class="text-3xl font-semibold md:text-4xl lg:text-5xl font-display text-white mb-3 tracking-tight"
+              >
+                Featured Rooms
+              </h2>
+              <div class="h-px w-16 bg-gold mx-auto mt-3"></div>
+            </div>
+            <p
+              class="text-white/70 text-sm md:text-base max-w-xl mx-auto mb-4 font-light leading-relaxed"
+            >
               Experience luxury and comfort in our elegantly designed rooms
             </p>
             <NuxtLink
@@ -460,7 +477,12 @@
     <!-- Gallery Section -->
     <section
       id="gallery"
-      class="border-b border-white/10 bg-gradient-to-b from-black via-black to-black/95 relative overflow-hidden"
+      :class="[
+        'border-b bg-gradient-to-b from-black via-black to-black/95 relative overflow-hidden transition-all duration-300',
+        activeSection === 'gallery'
+          ? 'border-gold border-b-2'
+          : 'border-white/10',
+      ]"
     >
       <!-- Decorative Background Elements -->
       <div class="absolute inset-0 opacity-5">
@@ -547,6 +569,7 @@
                 muted
                 loop
                 playsinline
+                preload="metadata"
                 class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
               >
                 <source
@@ -659,14 +682,30 @@
     </section>
 
     <!-- Dining Section -->
-    <section id="dining" class="border-b border-white/10 bg-black">
+    <section
+      id="dining"
+      :class="[
+        'border-b bg-black transition-all duration-300',
+        activeSection === 'dining'
+          ? 'border-gold border-b-2'
+          : 'border-white/10',
+      ]"
+    >
       <BaseContainer>
         <div class="py-12">
           <div class="mb-8 text-center">
-            <h2 class="text-3xl font-semibold md:text-4xl text-white mb-3">
-              Dining & Restaurants
-            </h2>
-            <p class="text-white/60 text-sm max-w-xl mx-auto mb-4">
+            <div class="inline-block mb-4">
+              <div class="h-px w-16 bg-gold mx-auto mb-3"></div>
+              <h2
+                class="text-3xl font-semibold md:text-4xl lg:text-5xl font-display text-white mb-3 tracking-tight"
+              >
+                Dining & Restaurants
+              </h2>
+              <div class="h-px w-16 bg-gold mx-auto mt-3"></div>
+            </div>
+            <p
+              class="text-white/70 text-sm md:text-base max-w-xl mx-auto mb-4 font-light leading-relaxed"
+            >
               Savor Michelin-starred cuisine and exquisite culinary experiences
             </p>
             <NuxtLink
@@ -734,7 +773,13 @@
 
     <!-- Guest Reviews Section -->
     <section
-      class="border-b border-white/10 bg-gradient-to-b from-black via-black to-black/95 relative overflow-hidden"
+      id="reviews"
+      :class="[
+        'border-b bg-gradient-to-b from-black via-black to-black/95 relative overflow-hidden transition-all duration-300',
+        activeSection === 'reviews'
+          ? 'border-gold border-b-2'
+          : 'border-white/10',
+      ]"
     >
       <!-- Decorative Background Elements -->
       <div class="absolute inset-0 opacity-5">
@@ -851,15 +896,30 @@
     </section>
 
     <!-- About Us Section -->
-    <section class="border-b border-white/10 bg-black">
+    <section
+      id="about"
+      :class="[
+        'border-b bg-black transition-all duration-300',
+        activeSection === 'about'
+          ? 'border-gold border-b-2'
+          : 'border-white/10',
+      ]"
+    >
       <BaseContainer>
         <div class="py-12">
           <div class="mb-8 text-center">
-            <h2 class="text-3xl font-semibold md:text-4xl text-white mb-3">
-              About Us
-            </h2>
-            <div class="h-px w-16 bg-gold mx-auto mb-5"></div>
-            <p class="text-white/60 text-sm max-w-2xl mx-auto">
+            <div class="inline-block mb-4">
+              <div class="h-px w-16 bg-gold mx-auto mb-3"></div>
+              <h2
+                class="text-3xl font-semibold md:text-4xl lg:text-5xl font-display text-white mb-3 tracking-tight"
+              >
+                About Us
+              </h2>
+              <div class="h-px w-16 bg-gold mx-auto mt-3"></div>
+            </div>
+            <p
+              class="text-white/70 text-sm md:text-base max-w-2xl mx-auto font-light leading-relaxed"
+            >
               A legacy of luxury and elegance since 1920
             </p>
           </div>
@@ -1040,12 +1100,30 @@
     </section>
 
     <!-- Contact Us Section -->
-    <section class="border-b border-white/10 bg-white/[0.02]">
+    <section
+      id="contact"
+      :class="[
+        'border-b bg-white/[0.02] transition-all duration-300',
+        activeSection === 'contact'
+          ? 'border-gold border-b-2'
+          : 'border-white/10',
+      ]"
+    >
       <BaseContainer>
         <div class="py-12">
           <div class="mb-8 text-center">
-            <h2 class="text-3xl font-semibold md:text-4xl">Contact Us</h2>
-            <p class="mt-3 max-w-2xl mx-auto text-white/70">
+            <div class="inline-block mb-4">
+              <div class="h-px w-16 bg-gold mx-auto mb-3"></div>
+              <h2
+                class="text-3xl font-semibold md:text-4xl lg:text-5xl font-display text-white mb-3 tracking-tight"
+              >
+                Contact Us
+              </h2>
+              <div class="h-px w-16 bg-gold mx-auto mt-3"></div>
+            </div>
+            <p
+              class="text-white/70 text-sm md:text-base max-w-2xl mx-auto font-light leading-relaxed"
+            >
               Get in touch with us for reservations, inquiries, or special
               requests.
             </p>
@@ -1134,6 +1212,52 @@
 // Hero video ref
 const heroVideo = ref<HTMLVideoElement | null>(null);
 const isVideoPlaying = ref(true);
+const activeSection = ref<string>("");
+
+// Scroll detection for active section border
+function updateActiveSection() {
+  const sections = [
+    "rooms",
+    "gallery",
+    "dining",
+    "reviews",
+    "about",
+    "contact",
+  ];
+  const scrollPosition = window.scrollY + 200; // Offset for header height
+
+  for (let i = sections.length - 1; i >= 0; i--) {
+    const section = document.getElementById(sections[i]);
+    if (section) {
+      const sectionTop = section.offsetTop;
+      const sectionHeight = section.offsetHeight;
+      if (
+        scrollPosition >= sectionTop &&
+        scrollPosition < sectionTop + sectionHeight
+      ) {
+        activeSection.value = sections[i];
+        return;
+      }
+    }
+  }
+  activeSection.value = "";
+}
+
+let scrollHandler: (() => void) | null = null;
+
+onMounted(() => {
+  scrollHandler = () => {
+    updateActiveSection();
+  };
+  window.addEventListener("scroll", scrollHandler);
+  updateActiveSection(); // Initial check
+});
+
+onBeforeUnmount(() => {
+  if (scrollHandler) {
+    window.removeEventListener("scroll", scrollHandler);
+  }
+});
 
 // Toggle video play/pause
 function toggleVideo() {

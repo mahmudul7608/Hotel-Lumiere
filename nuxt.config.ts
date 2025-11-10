@@ -81,6 +81,9 @@ export default defineNuxtConfig({
     strict: true,
     typeCheck: false,
   },
+  devServer: {
+    port: 3000,
+  },
   vite: {
     assetsInclude: ["**/*.mp4", "**/*.mov", "**/*.avi"],
     server: {
@@ -88,5 +91,22 @@ export default defineNuxtConfig({
         allow: [".."],
       },
     },
+    build: {
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            vendor: ["vue"],
+          },
+        },
+      },
+      chunkSizeWarningLimit: 1000,
+    },
+  },
+  experimental: {
+    payloadExtraction: false,
+  },
+  nitro: {
+    compressPublicAssets: true,
+    minify: true,
   },
 });
