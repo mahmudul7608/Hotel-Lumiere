@@ -72,6 +72,11 @@
             </transition>
           </div>
           <NuxtLink
+            to="/gallery"
+            class="text-sm text-white/80 hover:text-white transition-colors duration-200"
+            >Gallery</NuxtLink
+          >
+          <NuxtLink
             to="/dining"
             class="text-sm text-white/80 hover:text-white transition-colors duration-200"
             >Dining</NuxtLink
@@ -80,11 +85,6 @@
             to="/facilities"
             class="text-sm text-white/80 hover:text-white transition-colors duration-200"
             >Facilities</NuxtLink
-          >
-          <NuxtLink
-            to="/gallery"
-            class="text-sm text-white/80 hover:text-white transition-colors duration-200"
-            >Gallery</NuxtLink
           >
           <NuxtLink
             to="/about"
@@ -222,6 +222,13 @@
             <!-- Other Menu Items -->
             <NuxtLink
               @click="closeMobileMenu"
+              to="/gallery"
+              class="flex items-center rounded-lg px-4 py-3 text-base font-medium text-white/90 hover:bg-white/10 transition-colors duration-200"
+            >
+              Gallery
+            </NuxtLink>
+            <NuxtLink
+              @click="closeMobileMenu"
               to="/dining"
               class="flex items-center rounded-lg px-4 py-3 text-base font-medium text-white/90 hover:bg-white/10 transition-colors duration-200"
             >
@@ -233,13 +240,6 @@
               class="flex items-center rounded-lg px-4 py-3 text-base font-medium text-white/90 hover:bg-white/10 transition-colors duration-200"
             >
               Facilities
-            </NuxtLink>
-            <NuxtLink
-              @click="closeMobileMenu"
-              to="/gallery"
-              class="flex items-center rounded-lg px-4 py-3 text-base font-medium text-white/90 hover:bg-white/10 transition-colors duration-200"
-            >
-              Gallery
             </NuxtLink>
             <NuxtLink
               @click="closeMobileMenu"
