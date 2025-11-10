@@ -497,27 +497,50 @@
           <div
             class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5 max-h-[400px] sm:max-h-[450px] lg:max-h-[500px] overflow-hidden"
           >
-            <!-- Top-left: Room Image -->
+            <!-- Left Column: Two Images Stacked -->
             <div
-              class="col-span-1 sm:col-span-1 lg:col-span-1 row-span-1 group relative overflow-hidden rounded-2xl border border-white/10 hover:border-gold/50 transition-all duration-500 cursor-pointer aspect-square bg-white/5 backdrop-blur-sm hover:bg-white/10"
+              class="col-span-1 sm:col-span-1 lg:col-span-1 flex flex-col gap-4 md:gap-5"
             >
+              <!-- Top-left: Room Image -->
               <div
-                class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"
-              ></div>
-              <img
-                src="https://images.unsplash.com/photo-1540518614846-7eded433c457?q=80&w=1400&auto=format&fit=crop"
-                alt="Modern Bedroom"
-                class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110"
-                loading="lazy"
-              />
+                class="group relative overflow-hidden rounded-2xl border border-white/10 hover:border-gold/50 transition-all duration-500 cursor-pointer aspect-square bg-white/5 backdrop-blur-sm hover:bg-white/10 flex-1"
+              >
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"
+                ></div>
+                <img
+                  src="https://images.unsplash.com/photo-1540518614846-7eded433c457?q=80&w=1400&auto=format&fit=crop"
+                  alt="Modern Bedroom"
+                  class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110"
+                  loading="lazy"
+                />
+                <div
+                  class="absolute inset-0 ring-1 ring-white/5 group-hover:ring-gold/30 transition-all duration-500 rounded-2xl"
+                ></div>
+              </div>
+
+              <!-- Bottom-left: Room Image -->
               <div
-                class="absolute inset-0 ring-1 ring-white/5 group-hover:ring-gold/30 transition-all duration-500 rounded-2xl"
-              ></div>
+                class="group relative overflow-hidden rounded-2xl border border-white/10 hover:border-gold/50 transition-all duration-500 cursor-pointer aspect-square bg-white/5 backdrop-blur-sm hover:bg-white/10 flex-1"
+              >
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"
+                ></div>
+                <img
+                  src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?q=80&w=1400&auto=format&fit=crop"
+                  alt="Stylish Bedroom"
+                  class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110"
+                  loading="lazy"
+                />
+                <div
+                  class="absolute inset-0 ring-1 ring-white/5 group-hover:ring-gold/30 transition-all duration-500 rounded-2xl"
+                ></div>
+              </div>
             </div>
 
             <!-- Top-middle: Hotel Room Video (spans 2 columns) -->
             <div
-              class="col-span-1 sm:col-span-2 lg:col-span-2 row-span-1 group relative overflow-hidden rounded-2xl border-2 border-white/15 hover:border-gold/70 transition-all duration-700 cursor-pointer aspect-[4/3] bg-black/30 backdrop-blur-sm ring-2 ring-white/10 hover:ring-gold/50 shadow-2xl hover:shadow-gold/40"
+              class="col-span-1 sm:col-span-2 lg:col-span-2 row-span-2 group relative overflow-hidden rounded-2xl border-2 border-white/15 hover:border-gold/70 transition-all duration-700 cursor-pointer aspect-[4/3] bg-black/30 backdrop-blur-sm ring-2 ring-white/10 hover:ring-gold/50 shadow-2xl hover:shadow-gold/40"
             >
               <video
                 autoplay
@@ -566,76 +589,45 @@
               </div>
             </div>
 
-            <!-- Top-right: Room Image -->
+            <!-- Right Column: Two Images Stacked -->
             <div
-              class="col-span-1 sm:col-span-1 lg:col-span-1 row-span-1 group relative overflow-hidden rounded-2xl border border-white/10 hover:border-gold/50 transition-all duration-500 cursor-pointer aspect-square bg-white/5 backdrop-blur-sm hover:bg-white/10"
+              class="col-span-1 sm:col-span-1 lg:col-span-1 flex flex-col gap-4 md:gap-5"
             >
+              <!-- Top-right: Room Image -->
               <div
-                class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"
-              ></div>
-              <img
-                src="https://images.unsplash.com/photo-1560184897-ae75f418493e?q=80&w=1400&auto=format&fit=crop"
-                alt="Cozy Bedroom"
-                class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110"
-                loading="lazy"
-              />
-              <div
-                class="absolute inset-0 ring-1 ring-white/5 group-hover:ring-gold/30 transition-all duration-500 rounded-2xl"
-              ></div>
-            </div>
+                class="group relative overflow-hidden rounded-2xl border border-white/10 hover:border-gold/50 transition-all duration-500 cursor-pointer aspect-square bg-white/5 backdrop-blur-sm hover:bg-white/10 flex-1"
+              >
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"
+                ></div>
+                <img
+                  src="https://images.unsplash.com/photo-1560184897-ae75f418493e?q=80&w=1400&auto=format&fit=crop"
+                  alt="Cozy Bedroom"
+                  class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110"
+                  loading="lazy"
+                />
+                <div
+                  class="absolute inset-0 ring-1 ring-white/5 group-hover:ring-gold/30 transition-all duration-500 rounded-2xl"
+                ></div>
+              </div>
 
-            <!-- Bottom-left: Food Image -->
-            <div
-              class="col-span-1 sm:col-span-1 lg:col-span-1 row-span-1 group relative overflow-hidden rounded-2xl border border-white/10 hover:border-gold/50 transition-all duration-500 cursor-pointer aspect-square bg-white/5 backdrop-blur-sm hover:bg-white/10"
-            >
+              <!-- Bottom-right: Food Image -->
               <div
-                class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"
-              ></div>
-              <img
-                src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=1400&auto=format&fit=crop"
-                alt="Fine Dining"
-                class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110"
-                loading="lazy"
-              />
-              <div
-                class="absolute inset-0 ring-1 ring-white/5 group-hover:ring-gold/30 transition-all duration-500 rounded-2xl"
-              ></div>
-            </div>
-
-            <!-- Bottom-center: Room Image -->
-            <div
-              class="col-span-1 sm:col-span-1 lg:col-span-1 row-span-1 group relative overflow-hidden rounded-2xl border border-white/10 hover:border-gold/50 transition-all duration-500 cursor-pointer aspect-square bg-white/5 backdrop-blur-sm hover:bg-white/10"
-            >
-              <div
-                class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"
-              ></div>
-              <img
-                src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?q=80&w=1400&auto=format&fit=crop"
-                alt="Stylish Bedroom"
-                class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110"
-                loading="lazy"
-              />
-              <div
-                class="absolute inset-0 ring-1 ring-white/5 group-hover:ring-gold/30 transition-all duration-500 rounded-2xl"
-              ></div>
-            </div>
-
-            <!-- Bottom-right: Room Image -->
-            <div
-              class="col-span-1 sm:col-span-1 lg:col-span-1 row-span-1 group relative overflow-hidden rounded-2xl border border-white/10 hover:border-gold/50 transition-all duration-500 cursor-pointer aspect-square bg-white/5 backdrop-blur-sm hover:bg-white/10"
-            >
-              <div
-                class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"
-              ></div>
-              <img
-                src="https://images.unsplash.com/photo-1519710164239-da123dc03ef4?q=80&w=1400&auto=format&fit=crop"
-                alt="Luxurious Bedroom"
-                class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110"
-                loading="lazy"
-              />
-              <div
-                class="absolute inset-0 ring-1 ring-white/5 group-hover:ring-gold/30 transition-all duration-500 rounded-2xl"
-              ></div>
+                class="group relative overflow-hidden rounded-2xl border border-white/10 hover:border-gold/50 transition-all duration-500 cursor-pointer aspect-square bg-white/5 backdrop-blur-sm hover:bg-white/10 flex-1"
+              >
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"
+                ></div>
+                <img
+                  src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=1400&auto=format&fit=crop"
+                  alt="Fine Dining"
+                  class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110"
+                  loading="lazy"
+                />
+                <div
+                  class="absolute inset-0 ring-1 ring-white/5 group-hover:ring-gold/30 transition-all duration-500 rounded-2xl"
+                ></div>
+              </div>
             </div>
           </div>
 
@@ -741,30 +733,84 @@
     </section>
 
     <!-- Guest Reviews Section -->
-    <section class="border-b border-white/10 bg-white/[0.02]">
+    <section
+      class="border-b border-white/10 bg-gradient-to-b from-black via-black to-black/95 relative overflow-hidden"
+    >
+      <!-- Decorative Background Elements -->
+      <div class="absolute inset-0 opacity-5">
+        <div
+          class="absolute top-0 right-0 w-96 h-96 bg-gold rounded-full blur-3xl"
+        ></div>
+        <div
+          class="absolute bottom-0 left-0 w-96 h-96 bg-gold rounded-full blur-3xl"
+        ></div>
+      </div>
+
       <BaseContainer>
-        <div class="py-12">
-          <div class="mb-8 text-center">
-            <h2 class="text-3xl font-semibold md:text-4xl text-white mb-3">
-              Guest Reviews
-            </h2>
-            <p class="text-white/60 text-sm max-w-2xl mx-auto">
+        <div class="py-12 md:py-16 relative z-10">
+          <div class="mb-10 md:mb-12 text-center">
+            <div class="inline-block mb-4">
+              <div class="h-px w-16 bg-gold mx-auto mb-3"></div>
+              <h2
+                class="text-3xl font-semibold md:text-4xl lg:text-5xl font-display text-white mb-3 tracking-tight"
+              >
+                Guest Reviews
+              </h2>
+              <div class="h-px w-16 bg-gold mx-auto mt-3"></div>
+            </div>
+            <p
+              class="text-white/70 text-sm md:text-base max-w-2xl mx-auto font-light leading-relaxed"
+            >
               See what our guests have to say about their experience at Hôtel
               Lumière
             </p>
           </div>
 
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div
+            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6"
+          >
             <div
               v-for="review in reviews"
               :key="review.id"
-              class="group bg-white/5 backdrop-blur-sm rounded-xl p-5 border border-white/10 hover:border-gold/50 hover:ring-1 hover:ring-gold/30 transition-all duration-300 hover:bg-white/[0.08] hover:shadow-lg hover:shadow-gold/10"
+              class="group relative bg-white/5 backdrop-blur-sm rounded-2xl p-5 md:p-6 border border-white/10 hover:border-gold/50 hover:ring-2 hover:ring-gold/30 transition-all duration-500 hover:bg-white/[0.08] hover:shadow-xl hover:shadow-gold/20 overflow-hidden"
             >
+              <!-- Decorative Corner Elements -->
+              <div
+                class="absolute top-0 right-0 w-12 h-12 border-t-2 border-r-2 border-gold/0 group-hover:border-gold/50 transition-all duration-500 pointer-events-none rounded-tr-2xl"
+              ></div>
+              <div
+                class="absolute bottom-0 left-0 w-12 h-12 border-b-2 border-l-2 border-gold/0 group-hover:border-gold/50 transition-all duration-500 pointer-events-none rounded-bl-2xl"
+              ></div>
+
+              <!-- Guest Image -->
+              <div class="mb-4 flex items-center gap-3">
+                <div class="relative">
+                  <img
+                    :src="review.image"
+                    :alt="review.name"
+                    class="h-12 w-12 rounded-full object-cover border-2 border-white/20 group-hover:border-gold/50 transition-all duration-300"
+                    loading="lazy"
+                  />
+                  <div
+                    class="absolute -bottom-1 -right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-black"
+                  ></div>
+                </div>
+                <div class="flex-1 min-w-0">
+                  <p class="text-white font-semibold text-sm truncate">
+                    {{ review.name }}
+                  </p>
+                  <p class="text-white/60 text-xs truncate">
+                    {{ review.location }}
+                  </p>
+                </div>
+              </div>
+
+              <!-- Star Rating -->
               <div class="flex items-center gap-1 mb-4">
                 <svg
                   v-for="i in 5"
                   :key="i"
-                  class="h-3.5 w-3.5 text-gold"
+                  class="h-4 w-4 text-gold"
                   fill="currentColor"
                   viewBox="0 0 20 20"
                 >
@@ -773,27 +819,30 @@
                   />
                 </svg>
               </div>
+
+              <!-- Review Comment -->
               <p
-                class="text-white/80 text-sm leading-relaxed mb-4 line-clamp-4"
+                class="text-white/80 text-sm leading-relaxed mb-4 line-clamp-4 relative z-10"
               >
                 "{{ review.comment }}"
               </p>
+
+              <!-- Verified Badge -->
               <div
-                class="flex items-center gap-3 pt-3 border-t border-white/10"
+                class="flex items-center gap-2 pt-3 border-t border-white/10"
               >
-                <div
-                  class="h-9 w-9 rounded-full bg-gold/20 flex items-center justify-center text-gold font-semibold text-xs flex-shrink-0"
+                <svg
+                  class="h-4 w-4 text-gold"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
                 >
-                  {{ review.initials }}
-                </div>
-                <div class="min-w-0">
-                  <p class="text-white font-medium text-sm truncate">
-                    {{ review.name }}
-                  </p>
-                  <p class="text-white/60 text-xs truncate">
-                    {{ review.location }}
-                  </p>
-                </div>
+                  <path
+                    fill-rule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+                <span class="text-xs text-white/60">Verified Guest</span>
               </div>
             </div>
           </div>
@@ -1170,6 +1219,8 @@ const reviews = [
     name: "Sarah Mitchell",
     initials: "SM",
     location: "London, UK",
+    image:
+      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=400&auto=format&fit=crop",
     comment:
       "Absolutely stunning hotel! The service was impeccable and the rooms were beyond luxurious. Will definitely return.",
   },
@@ -1178,6 +1229,8 @@ const reviews = [
     name: "James Anderson",
     initials: "JA",
     location: "New York, USA",
+    image:
+      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=400&auto=format&fit=crop",
     comment:
       "Best hotel experience in Paris! The Michelin-starred dining was extraordinary and the staff made us feel like royalty.",
   },
@@ -1186,6 +1239,8 @@ const reviews = [
     name: "Marie Dubois",
     initials: "MD",
     location: "Paris, France",
+    image:
+      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=400&auto=format&fit=crop",
     comment:
       "Perfect location and exceptional service. The spa and pool facilities are world-class. Highly recommended!",
   },
@@ -1194,6 +1249,8 @@ const reviews = [
     name: "David Chen",
     initials: "DC",
     location: "Tokyo, Japan",
+    image:
+      "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=400&auto=format&fit=crop",
     comment:
       "An unforgettable stay! Every detail was perfect, from the elegant rooms to the attentive concierge service.",
   },

@@ -116,137 +116,197 @@
 
             <!-- Booking Form -->
             <div
-              class="rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 p-6 md:p-8"
+              class="rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 p-5 md:p-6 relative overflow-hidden"
             >
-              <h3 class="text-2xl font-display font-semibold text-white mb-6">
-                Booking Details
-              </h3>
-              <form class="space-y-6" @submit.prevent="handleSubmit">
-                <!-- Check-in & Check-out -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
-                    <label class="block text-sm font-semibold text-white mb-2">
-                      Check-in Date
-                    </label>
-                    <input
-                      v-model="bookingData.checkIn"
-                      type="date"
-                      required
-                      class="w-full rounded-lg bg-white/10 border border-white/20 p-4 text-white placeholder-white/50 focus:outline-none focus:border-gold focus:ring-2 focus:ring-gold/20 transition-all"
-                    />
-                  </div>
-                  <div>
-                    <label class="block text-sm font-semibold text-white mb-2">
-                      Check-out Date
-                    </label>
-                    <input
-                      v-model="bookingData.checkOut"
-                      type="date"
-                      required
-                      class="w-full rounded-lg bg-white/10 border border-white/20 p-4 text-white placeholder-white/50 focus:outline-none focus:border-gold focus:ring-2 focus:ring-gold/20 transition-all"
-                    />
-                  </div>
-                </div>
+              <!-- Decorative Elements -->
+              <div
+                class="absolute top-0 right-0 w-32 h-32 bg-gold/5 rounded-full -mr-16 -mt-16 blur-2xl"
+              ></div>
+              <div
+                class="absolute bottom-0 left-0 w-24 h-24 bg-gold/5 rounded-full -ml-12 -mb-12 blur-xl"
+              ></div>
 
-                <!-- Guests -->
-                <div>
-                  <label class="block text-sm font-semibold text-white mb-2">
-                    Number of Guests
-                  </label>
-                  <select
-                    v-model="bookingData.guests"
-                    required
-                    class="w-full rounded-lg bg-white/10 border border-white/20 p-4 text-white focus:outline-none focus:border-gold focus:ring-2 focus:ring-gold/20 transition-all appearance-none"
+              <div class="relative z-10">
+                <div class="flex items-center gap-3 mb-5">
+                  <div class="h-px w-8 bg-gold"></div>
+                  <h3
+                    class="text-xl md:text-2xl font-display font-semibold text-white"
                   >
-                    <option value="1">1 Guest</option>
-                    <option value="2">2 Guests</option>
-                    <option value="3">3 Guests</option>
-                    <option value="4">4 Guests</option>
-                    <option value="5+">5+ Guests</option>
-                  </select>
+                    Booking Details
+                  </h3>
                 </div>
 
-                <!-- Guest Information -->
-                <div class="pt-4 border-t border-white/10">
-                  <h4 class="text-lg font-semibold text-white mb-4">
-                    Guest Information
-                  </h4>
-                  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <form class="space-y-4" @submit.prevent="handleSubmit">
+                  <!-- Check-in & Check-out -->
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
                     <div>
                       <label
-                        class="block text-sm font-semibold text-white mb-2"
+                        class="block text-xs font-semibold text-white/90 mb-1.5"
                       >
-                        First Name
+                        Check-in Date
                       </label>
                       <input
-                        v-model="bookingData.firstName"
-                        type="text"
+                        v-model="bookingData.checkIn"
+                        type="date"
                         required
-                        class="w-full rounded-lg bg-white/10 border border-white/20 p-4 text-white placeholder-white/50 focus:outline-none focus:border-gold focus:ring-2 focus:ring-gold/20 transition-all"
-                        placeholder="John"
+                        class="w-full rounded-lg bg-white/10 border border-white/20 p-2.5 text-sm text-white placeholder-white/50 focus:outline-none focus:border-gold focus:ring-2 focus:ring-gold/20 transition-all hover:border-white/30"
                       />
                     </div>
                     <div>
                       <label
-                        class="block text-sm font-semibold text-white mb-2"
+                        class="block text-xs font-semibold text-white/90 mb-1.5"
                       >
-                        Last Name
+                        Check-out Date
                       </label>
                       <input
-                        v-model="bookingData.lastName"
-                        type="text"
+                        v-model="bookingData.checkOut"
+                        type="date"
                         required
-                        class="w-full rounded-lg bg-white/10 border border-white/20 p-4 text-white placeholder-white/50 focus:outline-none focus:border-gold focus:ring-2 focus:ring-gold/20 transition-all"
-                        placeholder="Doe"
+                        class="w-full rounded-lg bg-white/10 border border-white/20 p-2.5 text-sm text-white placeholder-white/50 focus:outline-none focus:border-gold focus:ring-2 focus:ring-gold/20 transition-all hover:border-white/30"
                       />
                     </div>
                   </div>
-                  <div class="mt-4">
-                    <label class="block text-sm font-semibold text-white mb-2">
-                      Email
+
+                  <!-- Guests -->
+                  <div>
+                    <label
+                      class="block text-xs font-semibold text-white/90 mb-1.5"
+                    >
+                      Number of Guests
                     </label>
-                    <input
-                      v-model="bookingData.email"
-                      type="email"
-                      required
-                      class="w-full rounded-lg bg-white/10 border border-white/20 p-4 text-white placeholder-white/50 focus:outline-none focus:border-gold focus:ring-2 focus:ring-gold/20 transition-all"
-                      placeholder="john.doe@example.com"
+                    <div class="relative">
+                      <select
+                        v-model="bookingData.guests"
+                        required
+                        class="w-full rounded-lg bg-white/10 border border-white/20 p-2.5 text-sm text-white focus:outline-none focus:border-gold focus:ring-2 focus:ring-gold/20 transition-all appearance-none hover:border-white/30 cursor-pointer"
+                      >
+                        <option value="1" class="bg-black text-white">
+                          1 Guest
+                        </option>
+                        <option value="2" class="bg-black text-white">
+                          2 Guests
+                        </option>
+                        <option value="3" class="bg-black text-white">
+                          3 Guests
+                        </option>
+                        <option value="4" class="bg-black text-white">
+                          4 Guests
+                        </option>
+                        <option value="5+" class="bg-black text-white">
+                          5+ Guests
+                        </option>
+                      </select>
+                      <div
+                        class="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none"
+                      >
+                        <svg
+                          class="h-4 w-4 text-white/60"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M19 9l-7 7-7-7"
+                          />
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Guest Information -->
+                  <div class="pt-3 border-t border-white/10">
+                    <div class="flex items-center gap-2 mb-3">
+                      <div class="h-px w-6 bg-gold"></div>
+                      <h4 class="text-base font-semibold text-white">
+                        Guest Information
+                      </h4>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                      <div>
+                        <label
+                          class="block text-xs font-semibold text-white/90 mb-1.5"
+                        >
+                          First Name
+                        </label>
+                        <input
+                          v-model="bookingData.firstName"
+                          type="text"
+                          required
+                          class="w-full rounded-lg bg-white/10 border border-white/20 p-2.5 text-sm text-white placeholder-white/50 focus:outline-none focus:border-gold focus:ring-2 focus:ring-gold/20 transition-all hover:border-white/30"
+                          placeholder="John"
+                        />
+                      </div>
+                      <div>
+                        <label
+                          class="block text-xs font-semibold text-white/90 mb-1.5"
+                        >
+                          Last Name
+                        </label>
+                        <input
+                          v-model="bookingData.lastName"
+                          type="text"
+                          required
+                          class="w-full rounded-lg bg-white/10 border border-white/20 p-2.5 text-sm text-white placeholder-white/50 focus:outline-none focus:border-gold focus:ring-2 focus:ring-gold/20 transition-all hover:border-white/30"
+                          placeholder="Doe"
+                        />
+                      </div>
+                    </div>
+                    <div class="mt-3">
+                      <label
+                        class="block text-xs font-semibold text-white/90 mb-1.5"
+                      >
+                        Email
+                      </label>
+                      <input
+                        v-model="bookingData.email"
+                        type="email"
+                        required
+                        class="w-full rounded-lg bg-white/10 border border-white/20 p-2.5 text-sm text-white placeholder-white/50 focus:outline-none focus:border-gold focus:ring-2 focus:ring-gold/20 transition-all hover:border-white/30"
+                        placeholder="john.doe@example.com"
+                      />
+                    </div>
+                    <div class="mt-3">
+                      <label
+                        class="block text-xs font-semibold text-white/90 mb-1.5"
+                      >
+                        Phone
+                      </label>
+                      <input
+                        v-model="bookingData.phone"
+                        type="tel"
+                        required
+                        class="w-full rounded-lg bg-white/10 border border-white/20 p-2.5 text-sm text-white placeholder-white/50 focus:outline-none focus:border-gold focus:ring-2 focus:ring-gold/20 transition-all hover:border-white/30"
+                        placeholder="+33 1 23 45 67 89"
+                      />
+                    </div>
+                  </div>
+
+                  <!-- Special Requests -->
+                  <div>
+                    <label
+                      class="block text-xs font-semibold text-white/90 mb-1.5"
+                    >
+                      Special Requests (Optional)
+                    </label>
+                    <textarea
+                      v-model="bookingData.specialRequests"
+                      rows="3"
+                      class="w-full rounded-lg bg-white/10 border border-white/20 p-2.5 text-sm text-white placeholder-white/50 focus:outline-none focus:border-gold focus:ring-2 focus:ring-gold/20 transition-all resize-none hover:border-white/30"
+                      placeholder="Any special requests or preferences..."
                     />
                   </div>
-                  <div class="mt-4">
-                    <label class="block text-sm font-semibold text-white mb-2">
-                      Phone
-                    </label>
-                    <input
-                      v-model="bookingData.phone"
-                      type="tel"
-                      required
-                      class="w-full rounded-lg bg-white/10 border border-white/20 p-4 text-white placeholder-white/50 focus:outline-none focus:border-gold focus:ring-2 focus:ring-gold/20 transition-all"
-                      placeholder="+33 1 23 45 67 89"
-                    />
-                  </div>
-                </div>
 
-                <!-- Special Requests -->
-                <div>
-                  <label class="block text-sm font-semibold text-white mb-2">
-                    Special Requests (Optional)
-                  </label>
-                  <textarea
-                    v-model="bookingData.specialRequests"
-                    rows="4"
-                    class="w-full rounded-lg bg-white/10 border border-white/20 p-4 text-white placeholder-white/50 focus:outline-none focus:border-gold focus:ring-2 focus:ring-gold/20 transition-all resize-none"
-                    placeholder="Any special requests or preferences..."
-                  />
-                </div>
-
-                <button
-                  type="submit"
-                  class="w-full rounded-lg bg-gradient-to-r from-gold to-gold/90 px-8 py-4 text-base font-bold text-black transition-all duration-300 hover:from-gold/90 hover:to-gold hover:scale-[1.02] shadow-lg shadow-gold/30"
-                >
-                  Complete Booking
-                </button>
-              </form>
+                  <button
+                    type="submit"
+                    class="w-full mt-4 rounded-lg bg-gradient-to-r from-gold to-gold/90 px-6 py-3 text-sm font-bold text-black transition-all duration-300 hover:from-gold/90 hover:to-gold hover:scale-[1.02] shadow-lg shadow-gold/30 hover:shadow-xl hover:shadow-gold/40"
+                  >
+                    Complete Booking
+                  </button>
+                </form>
+              </div>
             </div>
           </div>
 
@@ -410,3 +470,20 @@ onMounted(() => {
   bookingData.checkIn = today;
 });
 </script>
+
+<style scoped>
+/* Ensure date inputs display white text */
+input[type="date"] {
+  color-scheme: dark;
+}
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+  opacity: 0.7;
+  cursor: pointer;
+}
+/* Ensure select dropdown options have dark background */
+select option {
+  background-color: #000;
+  color: #fff;
+}
+</style>
