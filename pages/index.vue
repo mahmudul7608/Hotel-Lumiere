@@ -317,157 +317,198 @@
     </section>
 
     <!-- Rooms Section -->
-    <section
-      id="rooms"
-      class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 md:py-20 lg:py-24"
-    >
-      <div class="text-center py-10">
-        <h2
-          class="font-display text-3xl md:text-4xl lg:text-5xl text-white font-semibold mb-4"
-        >
-          Featured Rooms
-        </h2>
-        <NuxtLink
-          to="/rooms"
-          class="inline-flex items-center gap-1 text-sm md:text-base text-white/70 hover:text-white transition-colors duration-200"
-        >
-          View all <span class="text-lg">→</span>
-        </NuxtLink>
-      </div>
-      <div
-        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 pb-10"
-      >
-        <div
-          v-for="room in rooms"
-          :key="room.id"
-          class="group overflow-hidden rounded-2xl md:rounded-3xl ring-1 ring-white/10 transition-all duration-300 hover:ring-white/30 hover:ring-2 bg-white/5 hover:bg-white/8 hover:shadow-2xl hover:shadow-black/50"
-        >
-          <div class="relative overflow-hidden">
-            <img
-              :src="room.image"
-              :alt="room.title"
-              class="aspect-[4/3] w-full object-cover transition-transform duration-700 group-hover:scale-110"
-              loading="lazy"
-              @error="handleImageError"
-            />
+    <section id="rooms" class="border-b border-white/10 bg-white/[0.02]">
+      <BaseContainer>
+        <div class="py-12">
+          <div class="mb-8 flex items-center justify-between">
+            <div>
+              <h2 class="text-3xl font-semibold md:text-4xl text-white">
+                Featured Rooms
+              </h2>
+              <p class="mt-2 text-sm text-white/60">
+                Experience luxury and comfort in our elegantly designed rooms
+              </p>
+            </div>
+            <NuxtLink
+              to="/rooms"
+              class="hidden sm:inline-flex items-center gap-2 text-sm text-white/70 hover:text-gold transition-colors duration-200 border-b border-transparent hover:border-gold"
+            >
+              View all <span>→</span>
+            </NuxtLink>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             <div
-              class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"
-            />
-            <div class="absolute inset-x-0 bottom-0 p-5 md:p-6">
-              <h3
-                class="font-display text-2xl md:text-3xl text-white font-semibold"
-              >
-                {{ room.title }}
-              </h3>
+              v-for="room in rooms"
+              :key="room.id"
+              class="group overflow-hidden rounded-xl ring-1 ring-white/10 transition-all duration-300 hover:ring-gold/50 hover:ring-2 bg-white/5 hover:bg-white/[0.08] hover:shadow-xl hover:shadow-gold/10"
+            >
+              <div class="relative overflow-hidden">
+                <img
+                  :src="room.image"
+                  :alt="room.title"
+                  class="aspect-[4/3] w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  loading="lazy"
+                  @error="handleImageError"
+                />
+                <div
+                  class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"
+                />
+                <div class="absolute inset-x-0 bottom-0 p-4">
+                  <h3
+                    class="font-display text-xl text-white font-semibold mb-1"
+                  >
+                    {{ room.title }}
+                  </h3>
+                  <div class="flex items-center gap-2 text-xs text-white/80">
+                    <span
+                      v-for="(feature, i) in room.features.slice(0, 2)"
+                      :key="i"
+                      class="flex items-center gap-1"
+                    >
+                      {{ feature }}
+                      <span v-if="i < room.features.slice(0, 2).length - 1"
+                        >•</span
+                      >
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div class="p-4 space-y-3">
+                <div class="flex flex-wrap gap-1.5">
+                  <span
+                    v-for="(feature, i) in room.features"
+                    :key="i"
+                    class="text-xs px-2.5 py-1 rounded-full bg-white/10 text-white/80 backdrop-blur-sm"
+                  >
+                    {{ feature }}
+                  </span>
+                </div>
+                <div
+                  class="flex items-center justify-between pt-2 border-t border-white/10"
+                >
+                  <div class="text-xl font-semibold text-white">
+                    €{{ room.price
+                    }}<span class="text-xs text-white/60 font-normal ml-1"
+                      >/night</span
+                    >
+                  </div>
+                  <NuxtLink
+                    :to="`/booking?room=${encodeURIComponent(
+                      room.title
+                    )}&price=${room.price}&features=${room.features.join(
+                      ','
+                    )}&amenities=${room.amenities.join(
+                      ','
+                    )}&description=${encodeURIComponent(
+                      room.description
+                    )}&image=${encodeURIComponent(room.image)}`"
+                  >
+                    <BaseButton class="text-xs px-4 py-2">
+                      Book Now
+                    </BaseButton>
+                  </NuxtLink>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="p-5 md:p-6 space-y-4">
-            <div class="text-white/70">
-              <ul class="flex flex-wrap gap-2 text-xs md:text-sm">
-                <li
-                  v-for="(feature, i) in room.features"
-                  :key="i"
-                  class="rounded-full bg-white/10 px-3 py-1.5 backdrop-blur-sm"
-                >
-                  {{ feature }}
-                </li>
-              </ul>
-            </div>
-            <div class="flex items-center justify-between pt-2">
-              <div class="text-2xl md:text-3xl font-semibold text-white">
-                €{{ room.price
-                }}<span class="text-sm md:text-base text-white/60 font-normal"
-                  >/night</span
-                >
-              </div>
-              <NuxtLink
-                :to="`/booking?room=${encodeURIComponent(room.title)}&price=${
-                  room.price
-                }&features=${room.features.join(
-                  ','
-                )}&amenities=${room.amenities.join(
-                  ','
-                )}&description=${encodeURIComponent(
-                  room.description
-                )}&image=${encodeURIComponent(room.image)}`"
-              >
-                <button
-                  class="inline-flex items-center justify-center rounded-full bg-gold px-6 py-3 text-sm font-semibold text-black transition-all duration-300 hover:bg-white hover:scale-105 shadow-lg shadow-gold/20 hover:shadow-xl hover:shadow-gold/30"
-                >
-                  Book Now
-                </button>
-              </NuxtLink>
-            </div>
+
+          <div class="mt-6 text-center sm:hidden">
+            <NuxtLink
+              to="/rooms"
+              class="inline-flex items-center gap-2 text-sm text-white/70 hover:text-gold transition-colors"
+            >
+              View all rooms <span>→</span>
+            </NuxtLink>
           </div>
         </div>
-      </div>
+      </BaseContainer>
     </section>
 
     <!-- Dining Section -->
-    <section
-      id="dining"
-      class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 md:py-20 lg:py-24 bg-black"
-    >
-      <div class="text-center py-10">
-        <h2
-          class="font-display text-3xl md:text-4xl lg:text-5xl text-white font-semibold mb-4"
-        >
-          Dining & Restaurants
-        </h2>
-        <NuxtLink
-          to="/dining"
-          class="inline-flex items-center gap-1 text-sm md:text-base text-white/70 hover:text-white transition-colors duration-200"
-        >
-          See all <span class="text-lg">→</span>
-        </NuxtLink>
-      </div>
-      <div
-        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 pb-10"
-      >
-        <div
-          v-for="item in featuredDining"
-          :key="item.id"
-          class="group overflow-hidden rounded-2xl md:rounded-3xl ring-1 ring-white/10 transition-all duration-300 hover:ring-white/30 hover:ring-2 bg-white/5 hover:bg-white/8 hover:shadow-2xl hover:shadow-black/50"
-        >
-          <div class="relative overflow-hidden">
-            <img
-              :src="item.image"
-              :alt="item.name"
-              class="aspect-[4/3] w-full object-cover transition-transform duration-700 group-hover:scale-110"
-              loading="lazy"
-              @error="handleImageError"
-            />
+    <section id="dining" class="border-b border-white/10 bg-black">
+      <BaseContainer>
+        <div class="py-12">
+          <div class="mb-8 flex items-center justify-between">
+            <div>
+              <h2 class="text-3xl font-semibold md:text-4xl text-white">
+                Dining & Restaurants
+              </h2>
+              <p class="mt-2 text-sm text-white/60">
+                Savor Michelin-starred cuisine and exquisite culinary
+                experiences
+              </p>
+            </div>
+            <NuxtLink
+              to="/dining"
+              class="hidden sm:inline-flex items-center gap-2 text-sm text-white/70 hover:text-gold transition-colors duration-200 border-b border-transparent hover:border-gold"
+            >
+              See all <span>→</span>
+            </NuxtLink>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             <div
-              class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"
-            />
-            <div class="absolute inset-x-0 bottom-0 p-5 md:p-6">
-              <h3
-                class="font-display text-2xl md:text-3xl text-white font-semibold mb-1"
-              >
-                {{ item.name }}
-              </h3>
-              <p class="text-white/80 text-sm">{{ item.category }}</p>
+              v-for="item in featuredDining"
+              :key="item.id"
+              class="group overflow-hidden rounded-xl ring-1 ring-white/10 transition-all duration-300 hover:ring-gold/50 hover:ring-2 bg-white/5 hover:bg-white/[0.08] hover:shadow-xl hover:shadow-gold/10"
+            >
+              <div class="relative overflow-hidden">
+                <img
+                  :src="item.image"
+                  :alt="item.name"
+                  class="aspect-[4/3] w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  loading="lazy"
+                  @error="handleImageError"
+                />
+                <div
+                  class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"
+                />
+                <div class="absolute inset-x-0 bottom-0 p-4">
+                  <div class="mb-1">
+                    <span
+                      class="text-xs px-2 py-1 rounded-full bg-gold/20 text-gold backdrop-blur-sm"
+                    >
+                      {{ item.category }}
+                    </span>
+                  </div>
+                  <h3
+                    class="font-display text-xl text-white font-semibold mt-2"
+                  >
+                    {{ item.name }}
+                  </h3>
+                </div>
+              </div>
+              <div class="p-4 space-y-3">
+                <p class="text-white/70 text-sm line-clamp-2 leading-relaxed">
+                  {{ item.description }}
+                </p>
+                <div
+                  class="flex items-center justify-between pt-2 border-t border-white/10"
+                >
+                  <div class="text-xl font-semibold text-white">
+                    €{{ item.price }}
+                  </div>
+                  <NuxtLink :to="`/dining?item=${item.id}`">
+                    <BaseButton class="text-xs px-4 py-2">
+                      Order Now
+                    </BaseButton>
+                  </NuxtLink>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="p-5 md:p-6 space-y-4">
-            <p class="text-white/70 text-sm line-clamp-2">
-              {{ item.description }}
-            </p>
-            <div class="flex items-center justify-between pt-2">
-              <div class="text-2xl md:text-3xl font-semibold text-white">
-                €{{ item.price }}
-              </div>
-              <NuxtLink :to="`/dining?item=${item.id}`">
-                <button
-                  class="inline-flex items-center justify-center rounded-full bg-gold px-6 py-3 text-sm font-semibold text-black transition-all duration-300 hover:bg-white hover:scale-105 shadow-lg shadow-gold/20 hover:shadow-xl hover:shadow-gold/30"
-                >
-                  Order Now
-                </button>
-              </NuxtLink>
-            </div>
+
+          <div class="mt-6 text-center sm:hidden">
+            <NuxtLink
+              to="/dining"
+              class="inline-flex items-center gap-2 text-sm text-white/70 hover:text-gold transition-colors"
+            >
+              See all menu <span>→</span>
+            </NuxtLink>
           </div>
         </div>
-      </div>
+      </BaseContainer>
     </section>
 
     <!-- Guest Reviews Section -->
@@ -595,217 +636,92 @@
     </section>
 
     <!-- Contact Us Section -->
-    <section
-      class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 md:py-20 lg:py-24 bg-black"
-    >
-      <div class="text-center mb-12">
-        <h2
-          class="font-display text-3xl md:text-4xl lg:text-5xl text-white font-semibold mb-4"
-        >
-          Contact Us
-        </h2>
-        <p class="text-white/70 text-lg max-w-2xl mx-auto">
-          Get in touch with us for reservations, inquiries, or special requests.
-        </p>
-      </div>
-
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
-        <!-- Left Side - Contact Information -->
-        <div class="space-y-6">
-          <div>
-            <h3
-              class="font-display text-2xl md:text-3xl text-white font-semibold mb-4"
-            >
-              Get in Touch
-            </h3>
-            <p class="text-white/80 text-base leading-relaxed mb-6">
-              We're here to assist you with any questions or special requests.
-              Our team is available 24/7 to ensure your stay is exceptional.
+    <section class="border-b border-white/10 bg-white/[0.02]">
+      <BaseContainer>
+        <div class="py-12">
+          <div class="mb-8 text-center">
+            <h2 class="text-3xl font-semibold md:text-4xl">Contact Us</h2>
+            <p class="mt-3 max-w-2xl mx-auto text-white/70">
+              Get in touch with us for reservations, inquiries, or special
+              requests.
             </p>
           </div>
 
-          <!-- Phone -->
-          <div
-            class="flex items-start gap-4 p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-white/20 transition-all duration-300"
-          >
-            <div
-              class="inline-flex items-center justify-center w-14 h-14 rounded-full bg-gold/20 flex-shrink-0"
-            >
-              <svg
-                class="h-7 w-7 text-gold"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
-                />
-              </svg>
-            </div>
-            <div>
-              <h4 class="text-white font-semibold mb-2">Phone</h4>
-              <p class="text-white/70 text-sm mb-1">
-                <a
-                  href="tel:+33123456789"
-                  class="hover:text-gold transition-colors duration-200"
-                  >+33 1 23 45 67 89</a
-                >
-              </p>
-              <p class="text-white/70 text-sm">
-                <a
-                  href="tel:+33123456790"
-                  class="hover:text-gold transition-colors duration-200"
-                  >+33 1 23 45 67 90</a
-                >
-              </p>
-              <p class="text-white/60 text-xs mt-1">24/7 Available</p>
-            </div>
-          </div>
+          <div class="grid gap-8 md:grid-cols-2 md:gap-12">
+            <!-- Left Side - Contact Information -->
+            <div class="space-y-4">
+              <div>
+                <h3 class="font-display text-xl text-white font-semibold mb-3">
+                  Visit Us
+                </h3>
+                <p class="text-white/70 text-sm mb-4">
+                  12 Rue de Lumière, 75001 Paris
+                </p>
+              </div>
 
-          <!-- Email -->
-          <div
-            class="flex items-start gap-4 p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-white/20 transition-all duration-300"
-          >
-            <div
-              class="inline-flex items-center justify-center w-14 h-14 rounded-full bg-gold/20 flex-shrink-0"
-            >
-              <svg
-                class="h-7 w-7 text-gold"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                />
-              </svg>
+              <div class="space-y-3 text-sm text-white/70">
+                <div>
+                  Phone:
+                  <a
+                    class="text-white hover:text-gold transition-colors"
+                    href="tel:+33123456789"
+                    >+33 1 23 45 67 89</a
+                  >
+                </div>
+                <div>
+                  Email:
+                  <a
+                    class="text-white hover:text-gold transition-colors"
+                    href="mailto:contact@hotellumiere.com"
+                    >contact@hotellumiere.com</a
+                  >
+                </div>
+              </div>
+
+              <div class="flex items-center gap-4 pt-2 text-sm text-white/70">
+                <a
+                  href="https://instagram.com"
+                  target="_blank"
+                  class="hover:text-white transition-colors"
+                  >Instagram</a
+                >
+                <a
+                  href="https://facebook.com"
+                  target="_blank"
+                  class="hover:text-white transition-colors"
+                  >Facebook</a
+                >
+                <a
+                  href="https://www.tripadvisor.com"
+                  target="_blank"
+                  class="hover:text-white transition-colors"
+                  >Tripadvisor</a
+                >
+              </div>
+
+              <div class="pt-4">
+                <NuxtLink to="/contact">
+                  <BaseButton>Send Us a Message</BaseButton>
+                </NuxtLink>
+              </div>
             </div>
-            <div>
-              <h4 class="text-white font-semibold mb-2">Email</h4>
-              <p class="text-white/70 text-sm mb-1">
-                <a
-                  href="mailto:info@hotellumiere.com"
-                  class="hover:text-gold transition-colors duration-200"
-                  >info@hotellumiere.com</a
-                >
-              </p>
-              <p class="text-white/70 text-sm">
-                <a
-                  href="mailto:reservations@hotellumiere.com"
-                  class="hover:text-gold transition-colors duration-200"
-                  >reservations@hotellumiere.com</a
-                >
+
+            <!-- Right Side - Map -->
+            <div class="space-y-4">
+              <iframe
+                class="h-64 w-full rounded-xl ring-1 ring-white/10"
+                src="https://maps.google.com/maps?q=paris&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+              ></iframe>
+              <p class="text-sm text-white/70 text-center">
+                Located in the heart of Paris, just minutes from the Louvre and
+                Eiffel Tower
               </p>
             </div>
-          </div>
-
-          <!-- Address -->
-          <div
-            class="flex items-start gap-4 p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-white/20 transition-all duration-300"
-          >
-            <div
-              class="inline-flex items-center justify-center w-14 h-14 rounded-full bg-gold/20 flex-shrink-0"
-            >
-              <svg
-                class="h-7 w-7 text-gold"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-                />
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                />
-              </svg>
-            </div>
-            <div>
-              <h4 class="text-white font-semibold mb-2">Address</h4>
-              <p class="text-white/70 text-sm">12 Rue de Lumière</p>
-              <p class="text-white/70 text-sm">75001 Paris, France</p>
-            </div>
-          </div>
-
-          <!-- Business Hours -->
-          <div
-            class="flex items-start gap-4 p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-white/20 transition-all duration-300"
-          >
-            <div
-              class="inline-flex items-center justify-center w-14 h-14 rounded-full bg-gold/20 flex-shrink-0"
-            >
-              <svg
-                class="h-7 w-7 text-gold"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                />
-              </svg>
-            </div>
-            <div>
-              <h4 class="text-white font-semibold mb-2">Business Hours</h4>
-              <p class="text-white/70 text-sm">Monday - Sunday: 24/7</p>
-              <p class="text-white/70 text-sm">Reception: Open 24 hours</p>
-            </div>
-          </div>
-
-          <div class="pt-4">
-            <NuxtLink to="/contact">
-              <button
-                class="w-full lg:w-auto inline-flex items-center justify-center rounded-full bg-gold px-8 py-4 text-base font-semibold text-black transition-all duration-300 hover:bg-white hover:scale-105 shadow-lg shadow-gold/30"
-              >
-                Send Us a Message
-              </button>
-            </NuxtLink>
           </div>
         </div>
-
-        <!-- Right Side - Virtual Map -->
-        <div class="lg:sticky lg:top-24">
-          <div
-            class="relative rounded-2xl overflow-hidden aspect-[4/3] lg:aspect-[3/4] max-w-md mx-auto lg:max-w-none bg-white/5 border border-white/10 shadow-2xl"
-          >
-            <!-- Google Maps Embed -->
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.99162569376!2d2.3412!3d48.8566!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e1f06e2b70f%3A0x40b82c3688c9460!2sParis%2C%20France!5e0!3m2!1sen!2sus!4v1234567890123!5m2!1sen!2sus"
-              class="w-full h-full border-0"
-              allowfullscreen
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
-              title="Hotel Location Map"
-            ></iframe>
-            <!-- Overlay for better integration -->
-            <div
-              class="absolute inset-0 pointer-events-none bg-gradient-to-t from-black/10 via-transparent to-transparent"
-            />
-          </div>
-          <!-- Map Info -->
-          <div class="mt-4 text-center">
-            <p class="text-white/70 text-sm">
-              Located in the heart of Paris, just minutes from the Louvre and
-              Eiffel Tower
-            </p>
-          </div>
-        </div>
-      </div>
+      </BaseContainer>
     </section>
   </div>
 </template>
